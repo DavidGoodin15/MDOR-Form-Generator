@@ -1,0 +1,18 @@
+[Subject]
+IA M1 Int Change Form
+
+[Body]
+
+Change Control Form
+Start Date/Time:                 2017-04-20 08:00 CST
+Scheduled End Date/Time:         2017-04-20 08:30 CST
+
+DOR Title:  IA – M1 migration - Int
+
+Library Control Form
+Priority:  Normal
+Batchapps
+
+Build, distribute, deploy M1 Int B27
+
+SQR 10729

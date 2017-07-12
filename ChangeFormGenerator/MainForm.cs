@@ -14,6 +14,8 @@ namespace ChangeFormGenerator
         public MainForm()
         {
             InitializeComponent();
+            Properties.Settings.Default.ChangeType = "Somehting";
+            Properties.Settings.Default.Save();
         }
     }
 }
