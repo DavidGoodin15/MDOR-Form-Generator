@@ -46,5 +46,39 @@ namespace ChangeFormGenerator.Properties {
                 this["Environemnt"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime StartDate {
+            get {
+                return ((global::System.DateTime)(this["StartDate"]));
+            }
+            set {
+                this["StartDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime EndDate {
+            get {
+                return ((global::System.DateTime)(this["EndDate"]));
+            }
+            set {
+                this["EndDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Type {
+            get {
+                return ((string)(this["Type"]));
+            }
+            set {
+                this["Type"] = value;
+            }
+        }
     }
 }
