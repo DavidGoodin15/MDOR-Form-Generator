@@ -16,18 +16,24 @@ namespace ChangeFormGenerator
         {
             InitializeComponent();
 
+            comboBoxPriority.SelectedIndex = 1;
+
+
             SetDateToControl(dateTimePicker1, Properties.Settings.Default.StartDate);
-            SetDateToControl(dateTimePicker2, Properties.Settings.Default.EndDate);
-
-           
-
+            SetDateToControl2(dateTimePicker2, Properties.Settings.Default.EndDate);
+            comboBoxType.Text = Properties.Settings.Default.TypeBox;
+            comboBoxType2.Text = Properties.Settings.Default.ComboBox2;
+            comboBoxEnvironment.Text = Properties.Settings.Default.ComboBox3;
+            
+            textBox3.Text = Properties.Settings.Default.textbox1;
+            txtBoxSQR.Text = Properties.Settings.Default.textbox2;
+            textBox5.Text = Properties.Settings.Default.textbox3;    
             Properties.Settings.Default.Save();
 
            
 
 
         }
-
         private void SetDateToControl(DateTimePicker dtp, DateTime assignDate)
         {
             if (assignDate.Equals(DateTime.MinValue))
@@ -40,7 +46,18 @@ namespace ChangeFormGenerator
             }
 
         }
-              
+        private void SetDateToControl2(DateTimePicker dtp, DateTime assignDate)
+        {
+            if (assignDate.Equals(DateTime.MinValue))
+            {
+                dtp.Value = DateTime.Now;
+            }
+            else
+            {
+                dateTimePicker2.Value = assignDate;
+            }
+
+        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -75,13 +92,9 @@ namespace ChangeFormGenerator
             sb.AppendLine($"SQR:  {txtBoxSQR.Text}");
             sb.AppendLine($"{textBox5.Text}");
 
-            
-
-
 
             textBox2.Text = sb.ToString();
 
-           
         }
 
         private void GenerateEmailSubject()
@@ -132,6 +145,18 @@ namespace ChangeFormGenerator
         {
 
             Properties.Settings.Default.StartDate = dateTimePicker1.Value ;
+            Properties.Settings.Default.EndDate = dateTimePicker2.Value;
+            Properties.Settings.Default.TypeBox = comboBoxType.Text;
+            Properties.Settings.Default.ComboBox2 = comboBoxType2.Text;
+            Properties.Settings.Default.ComboBox3 = comboBoxEnvironment.Text;
+            
+            Properties.Settings.Default.textbox1 = textBox3.Text;
+            Properties.Settings.Default.textbox2 = txtBoxSQR.Text;
+            Properties.Settings.Default.textbox3 = textBox5.Text;
+
+            
+            
+
             Properties.Settings.Default.Save();
         }
     }

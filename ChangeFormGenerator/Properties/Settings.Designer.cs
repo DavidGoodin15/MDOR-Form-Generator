@@ -72,12 +72,72 @@ namespace ChangeFormGenerator.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Type {
+        public string TypeBox {
             get {
-                return ((string)(this["Type"]));
+                return ((string)(this["TypeBox"]));
             }
             set {
-                this["Type"] = value;
+                this["TypeBox"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ComboBox2 {
+            get {
+                return ((string)(this["ComboBox2"]));
+            }
+            set {
+                this["ComboBox2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ComboBox3 {
+            get {
+                return ((string)(this["ComboBox3"]));
+            }
+            set {
+                this["ComboBox3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textbox1 {
+            get {
+                return ((string)(this["textbox1"]));
+            }
+            set {
+                this["textbox1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textbox2 {
+            get {
+                return ((string)(this["textbox2"]));
+            }
+            set {
+                this["textbox2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textbox3 {
+            get {
+                return ((string)(this["textbox3"]));
+            }
+            set {
+                this["textbox3"] = value;
             }
         }
     }
