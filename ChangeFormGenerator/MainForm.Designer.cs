@@ -50,6 +50,7 @@
             this.txtBoxSQR = new System.Windows.Forms.TextBox();
             this.lblExtraInstructions = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Location = new System.Drawing.Point(459, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(497, 529);
+            this.panel1.Size = new System.Drawing.Size(497, 580);
             this.panel1.TabIndex = 0;
             // 
             // textBox2
@@ -72,11 +73,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.SystemColors.MenuText;
             this.textBox2.Location = new System.Drawing.Point(4, 35);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(482, 487);
+            this.textBox2.Size = new System.Drawing.Size(482, 538);
             this.textBox2.TabIndex = 12;
             // 
             // textBox1
@@ -140,6 +142,7 @@
             // comboBoxType
             // 
             this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxType.ForeColor = System.Drawing.SystemColors.MenuText;
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Items.AddRange(new object[] {
             "Standard",
@@ -182,6 +185,7 @@
             // comboBoxEnvironment
             // 
             this.comboBoxEnvironment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEnvironment.ForeColor = System.Drawing.SystemColors.MenuText;
             this.comboBoxEnvironment.FormattingEnabled = true;
             this.comboBoxEnvironment.Items.AddRange(new object[] {
             "Int",
@@ -287,18 +291,31 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(37, 369);
+            this.textBox5.Location = new System.Drawing.Point(37, 368);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(314, 140);
             this.textBox5.TabIndex = 9;
             this.textBox5.TextChanged += new System.EventHandler(this.comboBoxType_SelectedValueChanged);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button1.Location = new System.Drawing.Point(108, 528);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 49);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Send Email";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 543);
+            this.ClientSize = new System.Drawing.Size(959, 594);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.lblExtraInstructions);
             this.Controls.Add(this.txtBoxSQR);
@@ -354,6 +371,7 @@
         private System.Windows.Forms.Label lblExtraInstructions;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

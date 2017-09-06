@@ -7,33 +7,36 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Mail;
+
+
+
+
 
 namespace ChangeFormGenerator
 {
     public partial class MainForm : Form
+
     {
+
         public MainForm()
         {
             InitializeComponent();
 
             comboBoxPriority.SelectedIndex = 1;
 
-
             SetDateToControl(dateTimePicker1, Properties.Settings.Default.StartDate);
             SetDateToControl2(dateTimePicker2, Properties.Settings.Default.EndDate);
             comboBoxType.Text = Properties.Settings.Default.TypeBox;
             comboBoxType2.Text = Properties.Settings.Default.ComboBox2;
             comboBoxEnvironment.Text = Properties.Settings.Default.ComboBox3;
-            
             textBox3.Text = Properties.Settings.Default.textbox1;
             txtBoxSQR.Text = Properties.Settings.Default.textbox2;
-            textBox5.Text = Properties.Settings.Default.textbox3;    
+            textBox5.Text = Properties.Settings.Default.textbox3;
             Properties.Settings.Default.Save();
-
-           
-
-
         }
+
         private void SetDateToControl(DateTimePicker dtp, DateTime assignDate)
         {
             if (assignDate.Equals(DateTime.MinValue))
@@ -44,7 +47,6 @@ namespace ChangeFormGenerator
             {
                 dateTimePicker1.Value = assignDate;
             }
-
         }
         private void SetDateToControl2(DateTimePicker dtp, DateTime assignDate)
         {
@@ -56,14 +58,10 @@ namespace ChangeFormGenerator
             {
                 dateTimePicker2.Value = assignDate;
             }
-
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-
         }
-
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             GenerateEmailBody();
@@ -72,11 +70,9 @@ namespace ChangeFormGenerator
         private void GenerateEmailBody()
         {
             var sb = new StringBuilder();
-
-
             sb.AppendLine("Change Control Form");
-            sb.AppendLine($"Start Date/Time:\t\t {dateTimePicker1.Value:yyyy-MM-dd} {dateTimePicker3.Value:HH:mm} CST");
-            sb.AppendLine($"Scheduled End Date/Time:\t {dateTimePicker2.Value:yyyy-MM-dd} {dateTimePicker4.Value:HH:mm} CST");
+            sb.AppendLine($"Start Date/Time:\t\t {dateTimePicker1.Value:yyyy-MM-dd} {dateTimePicker3.Value:HH:mm} EST");
+            sb.AppendLine($"Scheduled End Date/Time:\t {dateTimePicker2.Value:yyyy-MM-dd} {dateTimePicker4.Value:HH:mm} EST");
             sb.AppendLine();
             var titletype = IsMDORCommon() ? comboBoxType.Text : comboBoxType2.Text;
             sb.AppendLine($"DOR Title:      IA  -  {titletype}  -  {comboBoxEnvironment.Text}  migration");
@@ -92,9 +88,7 @@ namespace ChangeFormGenerator
             sb.AppendLine($"SQR:  {txtBoxSQR.Text}");
             sb.AppendLine($"{textBox5.Text}");
 
-
             textBox2.Text = sb.ToString();
-
         }
 
         private void GenerateEmailSubject()
@@ -102,9 +96,7 @@ namespace ChangeFormGenerator
             var sb = new StringBuilder();
             var subjectTitle = IsStandard() ? comboBoxType2.Text : comboBoxType.Text;  
             sb.Append($"IA  {subjectTitle} {comboBoxEnvironment.Text}  Change Form");
-
             textBox1.Text = sb.ToString();
-
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
@@ -116,31 +108,24 @@ namespace ChangeFormGenerator
         {
             GenerateEmailBody();
             GenerateEmailSubject();
-
         }
         private void comboBoxType_SelectedValueChanged2(object sender, EventArgs e)
         {
             GenerateEmailBody();
             GenerateEmailSubject();
-
         }
-
         private bool IsStandard()
         {
             return comboBoxType.Text.Equals("Standard");
-
         }
         private bool IsUserApps()
         {
             return comboBoxType.Text.Equals("User Apps");
-
         }
         private bool IsMDORCommon()
         {
             return comboBoxType.Text.Equals("MDOR Common");
-
         }
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -148,16 +133,23 @@ namespace ChangeFormGenerator
             Properties.Settings.Default.EndDate = dateTimePicker2.Value;
             Properties.Settings.Default.TypeBox = comboBoxType.Text;
             Properties.Settings.Default.ComboBox2 = comboBoxType2.Text;
-            Properties.Settings.Default.ComboBox3 = comboBoxEnvironment.Text;
-            
+            Properties.Settings.Default.ComboBox3 = comboBoxEnvironment.Text; 
             Properties.Settings.Default.textbox1 = textBox3.Text;
             Properties.Settings.Default.textbox2 = txtBoxSQR.Text;
             Properties.Settings.Default.textbox3 = textBox5.Text;
-
-            
-            
-
+       
             Properties.Settings.Default.Save();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Outlook.Application objOutlook = new Microsoft.Office.Interop.Outlook.Application();
+            Microsoft.Office.Interop.Outlook.MailItem
+                mic = objOutlook.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem) as Microsoft.Office.Interop.Outlook.MailItem;
+            mic.To = "";
+            mic.Subject = textBox1.Text;
+            mic.Body = textBox2.Text;
+            mic.Display(true);
         }
     }
 }
